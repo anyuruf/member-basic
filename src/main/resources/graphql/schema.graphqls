@@ -1,0 +1,29 @@
+type Query {
+    MemberInfo : membersInfo
+    [MemberBasic]: nodes
+    [Links]: links
+}
+
+type MemberInfo {
+    nodes
+    links
+}
+
+type MemberBasic {
+    ID : id
+    firstName : String
+    lastName : String
+    dob : String
+}
+
+type Link {
+    id : ID
+    source : String
+    target : String
+    parent : Parent
+}
+
+enum Parent {
+    FATHER
+    MOTHER
+}
