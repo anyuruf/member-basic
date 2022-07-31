@@ -5,8 +5,8 @@ type Query {
 }
 
 type MemberInfo {
-    nodes
-    links
+    [MemberBasic]: nodes
+    [Links]: links
 }
 
 type MemberBasic {
