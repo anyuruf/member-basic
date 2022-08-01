@@ -23,6 +23,12 @@ type Link {
     parent : Parent
 }
 
+type LinkInput {
+    source : String
+    target : String
+    parent : Parent
+}
+
 enum Parent {
     FATHER
     MOTHER
@@ -38,6 +44,6 @@ type Mutation {
     addMember(MemberBasicInput): MemberBasic
     editMemmber(MemberBasic): MemberBasic
     addLink(LinkInput): Link
-    addLinks([Link]): [Link]
+    addLinks([LinkInput]): [Link]
     editLink(Link): Link
 }
