@@ -7,14 +7,14 @@ type MemberBasic {
     ID : id
     firstName : String
     lastName : String
-    Gender: gender
+    gender: Gender
     dob : String
 }
 
 type MemberBasicInput {
     firstName : String
     lastName : String
-    Gender: gender
+    gender: Gender
     dob : String
 }
 
