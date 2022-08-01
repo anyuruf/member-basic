@@ -19,7 +19,7 @@ import net.anyuruf.memberbasic.entity.GenderEnum.Gender;
 public class MemberBasic {
 
     @PrimaryKey
-    private UUID id;
+    private UUID id = UUID.randomUUID();
     private String firstName;
     private String lastName;
     private Gender gender;
