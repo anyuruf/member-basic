@@ -36,7 +36,7 @@ type Query {
 
 type Mutation {
     addMember(MemberBasicInput): MemberBasic
-    editMemmber(MemberBasicInput): 
+    editMemmber(MemberBasicInput): MemberBasic
     addLink(LinkInput): Link
     addLinks([Link]): [Link]
     editLink(Link): Link
