@@ -1,9 +1,3 @@
-type Query {
-    MemberInfo : membersInfo
-    [MemberBasic]: nodes
-    [Links]: links
-}
-
 type MemberInfo {
     [MemberBasic]: nodes
     [Links]: links
@@ -11,6 +5,12 @@ type MemberInfo {
 
 type MemberBasic {
     ID : id
+    firstName : String
+    lastName : String
+    dob : String
+}
+
+type MemberBasicInput {
     firstName : String
     lastName : String
     dob : String
@@ -26,4 +26,15 @@ type Link {
 enum Parent {
     FATHER
     MOTHER
+}
+
+type Query {
+    MemberInfo : membersInfo
+    [MemberBasic]: nodes
+    [Links]: links
+}
+
+type Mutation {
+    addMember(MemberBasicInput): MemberBasic
+    editMemmber(MemberBasicInput): MemberBasic
 }
