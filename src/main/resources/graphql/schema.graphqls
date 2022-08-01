@@ -7,12 +7,14 @@ type MemberBasic {
     ID : id
     firstName : String
     lastName : String
+    Gender: gender
     dob : String
 }
 
 type MemberBasicInput {
     firstName : String
     lastName : String
+    Gender: gender
     dob : String
 }
 
@@ -32,6 +34,11 @@ type LinkInput {
 enum Parent {
     FATHER
     MOTHER
+}
+
+enum Gender {
+    MALE
+    FEMALE
 }
 
 type Query {
