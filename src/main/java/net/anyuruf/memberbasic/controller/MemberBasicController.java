@@ -10,29 +10,25 @@ import net.anyuruf.memberbasic.repository.LinkRepository;
 import net.anyuruf.memberbasic.entity.Link;
 import net.anyuruf.memberbasic.entity.MemberBasic;
 
-
 @Controller
 public class MemberBasicController {
 
-	private final MemberBasicRepository memberRepository;
+    private final MemberBasicRepository memberRepository;
     private final LinkRepository linkRepository;
 
-	public MemberBasicController(MemberBasicRepository memRepo, LinkRepository linkRepo) {
-		this.memberRepository = memRepo;
+    public MemberBasicController(MemberBasicRepository memRepo, LinkRepository linkRepo) {
+        this.memberRepository = memRepo;
         this.linkRepository = linkRepo;
-	}
+    }
 
-	@QueryMapping
-	public Flux<MemberBasic> nodes() {
-		return this.memberRepository.findAll();
-	}
+    @QueryMapping
+    public Flux<MemberBasic> nodes() {
+        return this.memberRepository.findAll();
+    }
 
-	@QueryMapping
-	public Flux<Link> links() {
-		return this.linkRepository.findAll();
-	}
+    @QueryMapping
+    public Flux<Link> links() {
+        return this.linkRepository.findAll();
+    }
 
-
-}
-    
 }
