@@ -38,7 +38,7 @@ enum Gender {
 
 type Query {
   nodes: [MemberBasic]
-  links: [Links]
+  links: [Link]
 }
 
 type Mutation {
