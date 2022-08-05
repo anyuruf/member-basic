@@ -1,50 +1,50 @@
 type MemberBasic {
-    ID : id
-    firstName : String
-    lastName : String
-    gender: Gender
-    dob : String
+  ID: id
+  firstName: String
+  lastName: String
+  gender: Gender
+  dob: String
 }
 
 type MemberBasicInput {
-    firstName : String
-    lastName : String
-    gender: Gender
-    dob : String
+  firstName: String
+  lastName: String
+  gender: Gender
+  dob: String
 }
 
 type Link {
-    id : ID
-    source : String
-    target : String
-    parent : Parent
+  id: ID
+  source: String
+  target: String
+  parent: Parent
 }
 
 type LinkInput {
-    source : String
-    target : String
-    parent : Parent
+  source: String
+  target: String
+  parent: Parent
 }
 
 enum Parent {
-    FATHER
-    MOTHER
+  FATHER
+  MOTHER
 }
 
 enum Gender {
-    MALE
-    FEMALE
+  MALE
+  FEMALE
 }
 
 type Query {
-     nodes: [MemberBasic]
-    links: [Links]
+  nodes: [MemberBasic]
+  links: [Links]
 }
 
 type Mutation {
-    addMember($memberBasicInput: MemberBasicInput!): MemberBasic
-    editMemmber($memberBasic: MemberBasic!): MemberBasic
-    addLink($linkInput: LinkInput): Link
-    addLinks($links: [LinkInput]): [Link]
-    editLink($link: Link): Link
+  addMember(memberBasicInput: MemberBasicInput!): MemberBasic
+  editMemmber(memberBasic: MemberBasic!): MemberBasic
+  addLink(linkInput: LinkInput): Link
+  addLinks(links: [LinkInput]): [Link]
+  editLink(link: Link): Link
 }
