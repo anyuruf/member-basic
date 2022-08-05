@@ -6,19 +6,12 @@ type MemberBasic {
   dob: String
 }
 
-input MemberBasicP {
-  id: ID
-  firstName: String
-  lastName: String
-  gender: Gender
-  dob: String
-}
-
 input MemberBasicInput {
-  firstName: String
-  lastName: String
-  gender: Gender
-  dob: String
+  id: ID
+  firstName: String!
+  lastName: String!
+  gender: Gender!
+  dob: String!
 }
 
 type Link {
@@ -28,14 +21,8 @@ type Link {
   parent: Parent
 }
 
-input LinkP {
-  id: ID
-  source: String
-  target: String
-  parent: Parent
-}
-
 input LinkInput {
+  id: ID
   source: String
   target: String
   parent: Parent
@@ -58,8 +45,8 @@ type Query {
 
 type Mutation {
   addMember(memberBasicInput: MemberBasicInput!): MemberBasic
-  editMemmber(memberBasicP: MemberBasicP!): MemberBasic
+  editMemmber(memberBasicInput: MemberBasicInput!): MemberBasic
   addLink(linkInput: LinkInput): Link
   addLinks(links: [LinkInput]): [Link]
-  editLink(linkP: LinkP): Link
+  editLink(linkInput: LinkInput): Link
 }
