@@ -6,6 +6,14 @@ type MemberBasic {
   dob: String
 }
 
+input MemberBasicP {
+  id: ID
+  firstName: String
+  lastName: String
+  gender: Gender
+  dob: String
+}
+
 input MemberBasicInput {
   firstName: String
   lastName: String
@@ -43,7 +51,7 @@ type Query {
 
 type Mutation {
   addMember(memberBasicInput: MemberBasicInput!): MemberBasic
-  editMemmber(memberBasic: MemberBasic!): MemberBasic
+  editMemmber(memberBasicP: MemberBasicP!): MemberBasic
   addLink(linkInput: LinkInput): Link
   addLinks(links: [LinkInput]): [Link]
   editLink(link: Link): Link
