@@ -37,14 +37,14 @@ enum Gender {
 }
 
 type Query {
-    [MemberBasic]: nodes
-    [Links]: links
+     nodes: [MemberBasic]
+    links: [Links]
 }
 
 type Mutation {
-    addMember(MemberBasicInput): MemberBasic
-    editMemmber(MemberBasic): MemberBasic
-    addLink(LinkInput): Link
-    addLinks([LinkInput]): [Link]
-    editLink(Link): Link
+    addMember($memberBasicInput: MemberBasicInput!): MemberBasic
+    editMemmber($memberBasic: MemberBasic!): MemberBasic
+    addLink($linkInput: LinkInput): Link
+    addLinks($links: [LinkInput]): [Link]
+    editLink($link: Link): Link
 }
