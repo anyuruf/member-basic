@@ -6,11 +6,11 @@ import net.anyuruf.memberbasic.entity.GenderEnum.Gender;
 
 public class MemberBasicInput {
     @Nonnull
-    private String firstName;
+    public String firstName;
     @Nonnull
-    private String lastName;
+    public String lastName;
     @Nonnull
-    private Gender gender;
+    public Gender gender;
     @Nonnull
-    private LocalDate dob;
+    public LocalDate dob;
 }
