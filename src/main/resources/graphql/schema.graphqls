@@ -28,6 +28,13 @@ type Link {
   parent: Parent
 }
 
+input LinkP {
+  id: ID
+  source: String
+  target: String
+  parent: Parent
+}
+
 input LinkInput {
   source: String
   target: String
@@ -54,5 +61,5 @@ type Mutation {
   editMemmber(memberBasicP: MemberBasicP!): MemberBasic
   addLink(linkInput: LinkInput): Link
   addLinks(links: [LinkInput]): [Link]
-  editLink(link: Link): Link
+  editLink(linkP: LinkP): Link
 }
