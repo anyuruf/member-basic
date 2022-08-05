@@ -1,8 +1,3 @@
-type MemberInfo {
-    [MemberBasic]: nodes
-    [Links]: links
-}
-
 type MemberBasic {
     ID : id
     firstName : String
@@ -42,7 +37,6 @@ enum Gender {
 }
 
 type Query {
-    MemberInfo : membersInfo
     [MemberBasic]: nodes
     [Links]: links
 }
