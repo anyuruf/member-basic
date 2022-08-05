@@ -6,7 +6,7 @@ type MemberBasic {
   dob: String
 }
 
-type MemberBasicInput {
+input MemberBasicInput {
   firstName: String
   lastName: String
   gender: Gender
@@ -20,7 +20,7 @@ type Link {
   parent: Parent
 }
 
-type LinkInput {
+input LinkInput {
   source: String
   target: String
   parent: Parent
