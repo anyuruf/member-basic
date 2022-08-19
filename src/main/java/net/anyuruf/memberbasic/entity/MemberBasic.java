@@ -23,14 +23,14 @@ public class MemberBasic {
     private LocalDate dob;
 
     MemberBasic() {
-        id = UUID.randomUUID();
+        this.id = UUID.randomUUID();
     }
 
     MemberBasic(String fn, String ln, Gender gn, LocalDate ld) {
         this();
-        firstName = fn;
-        lastName = ln;
-        gender = gn;
-        dob = ld;
+        this.firstName = fn;
+        this.lastName = ln;
+        this.gender = gn;
+        this.dob = ld;
     }
 }
