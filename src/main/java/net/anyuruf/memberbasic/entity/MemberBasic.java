@@ -8,13 +8,10 @@ import org.springframework.data.cassandra.core.mapping.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import net.anyuruf.memberbasic.entity.GenderEnum.Gender;
 
 @Data
-
 @AllArgsConstructor
-@NoArgsConstructor
 @Table
 public class MemberBasic {
 
@@ -24,4 +21,16 @@ public class MemberBasic {
     private String lastName;
     private Gender gender;
     private LocalDate dob;
+
+    MemberBasic() {
+        id = UUID.randomUUID();
+    }
+
+    MemberBasic(String fn, String ln, Gender gn, LocalDate ld) {
+        this();
+        firstName = fn;
+        lastName = ln;
+        gender = gn;
+        dob = ld;
+    }
 }
