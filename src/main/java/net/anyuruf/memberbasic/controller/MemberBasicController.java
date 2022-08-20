@@ -3,8 +3,6 @@ package net.anyuruf.memberbasic.controller;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.UUID;
-
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -39,7 +37,7 @@ public class MemberBasicController {
 
     @MutationMapping
     public Mono<MemberBasic> addMember(@Argument MemberBasicInput memberBasicInput) {
-        MemberBasic memberBasic = new MemberBasic(UUID.randomUUID(), memberBasicInput.firstName,
+        MemberBasic memberBasic = new MemberBasic(memberBasicInput.firstName,
                 memberBasicInput.lastName, memberBasicInput.gender, memberBasicInput.dob);
         return this.memberRepository.save(memberBasic);
     }

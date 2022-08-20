@@ -22,11 +22,11 @@ public class MemberBasic {
     private Gender gender;
     private LocalDate dob;
 
-    MemberBasic() {
+    public MemberBasic() {
         this.id = UUID.randomUUID();
     }
 
-    MemberBasic(String fn, String ln, Gender gn, LocalDate ld) {
+    public MemberBasic(String fn, String ln, Gender gn, LocalDate ld) {
         this();
         this.firstName = fn;
         this.lastName = ln;
