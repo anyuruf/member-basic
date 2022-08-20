@@ -4,18 +4,20 @@ import java.time.LocalDate;
 import javax.annotation.Nonnull;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import net.anyuruf.memberbasic.entity.GenderEnum.Gender;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class MemberBasicInput {
     @Nonnull
-    public String firstName;
+    private String firstName;
     @Nonnull
-    public String lastName;
+    private String lastName;
     @Nonnull
-    public Gender gender;
+    private Gender gender;
     @Nonnull
-    public LocalDate dob;
+    private LocalDate dob;
 }
