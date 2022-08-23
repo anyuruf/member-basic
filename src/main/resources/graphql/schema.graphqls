@@ -1,16 +1,18 @@
+scalar Date
+
 type MemberBasic {
   id: ID
   firstName: String
   lastName: String
   gender: Gender
-  dob: String
+  dob: Date
 }
 
 input MemberBasicInput {
   firstName: String!
   lastName: String!
   gender: Gender!
-  dob: String!
+  dob: Date!
 }
 
 type Link {

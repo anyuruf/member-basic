@@ -38,10 +38,8 @@ public class MemberBasicController {
     @MutationMapping
     public Mono<MemberBasic> addMember(@Argument MemberBasicInput memberBasicInput) {
 
-        System.out.println("MemberBAsic Input");
-        MemberBasic memberBasic = new MemberBasic(memberBasicInput.getFirstName(),
-                memberBasicInput.getLastName(), memberBasicInput.getGender(), memberBasicInput.getDob());
-        System.out.println("MemberBAsic Input Save");
+        MemberBasic memberBasic = new MemberBasic(memberBasicInput.getFirstName(), memberBasicInput.getLastName(),
+                memberBasicInput.getGender(), memberBasicInput.getDob());
         return this.memberRepository.save(memberBasic);
     }
 
