@@ -1,6 +1,7 @@
-package net.anyuruf.memberbasic.entity;
+package net.anyuruf.memberbasic.domain.member.entity;
 
 import java.time.LocalDate;
+
 import javax.annotation.Nonnull;
 
 import lombok.AllArgsConstructor;

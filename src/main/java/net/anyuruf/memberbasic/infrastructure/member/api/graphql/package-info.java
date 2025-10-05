@@ -1,0 +1,1 @@
+package net.anyuruf.memberbasic.infrastructure.member.api.graphql;

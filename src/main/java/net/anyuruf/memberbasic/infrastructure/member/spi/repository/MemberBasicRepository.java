@@ -1,4 +1,4 @@
-package net.anyuruf.memberbasic.repository;
+package net.anyuruf.memberbasic.infrastructure.member.spi.repository;
 
 import org.springframework.data.cassandra.repository.ReactiveCassandraRepository;
 import java.util.UUID;
