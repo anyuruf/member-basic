@@ -4,6 +4,7 @@ type MemberBasic {
   id: ID
   firstName: String
   lastName: String
+  description: String
   gender: Gender
   dob: Date
 }
@@ -11,6 +12,15 @@ type MemberBasic {
 input MemberBasicInput {
   firstName: String!
   lastName: String!
+  description:String!
+  gender: Gender!
+  dob: Date!
+}
+
+input EditMemberInput {
+  firstName: String!
+  lastName: String!
+  description:String!
   gender: Gender!
   dob: Date!
 }
@@ -40,13 +50,14 @@ enum Gender {
 }
 
 type Query {
-  nodes: [MemberBasic]
-  links: [Link]
+  getAllMembers: [MemberBasic]
+  getFamilyMember(id): MemberBasic
+  getLinks: [Link]
 }
 
 type Mutation {
   addMember(memberBasicInput: MemberBasicInput!): MemberBasic
-  editMemmber(memberBasicInput: MemberBasicInput!): MemberBasic
+  editMemmber(editMemberInput: EditMemberInput!): MemberBasic
   addLink(linkInput: LinkInput): Link
   addLinks(links: [LinkInput]): [Link]
   editLink(linkInput: LinkInput): Link

@@ -8,7 +8,7 @@ import org.springframework.graphql.execution.RuntimeWiringConfigurer;
 
 import graphql.scalars.ExtendedScalars;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "net.anyuruf.memberbasic")
 public class MemberbasicApplication {
 
 	public static void main(String[] args) {

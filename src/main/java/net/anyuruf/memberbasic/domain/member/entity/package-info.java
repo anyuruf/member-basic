@@ -1,0 +1,1 @@
+package net.anyuruf.memberbasic.domain.member.entity;
