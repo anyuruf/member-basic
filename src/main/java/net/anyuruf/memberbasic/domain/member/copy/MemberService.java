@@ -5,13 +5,14 @@ import java.util.UUID;
 import org.reactivestreams.Publisher;
 
 import lombok.RequiredArgsConstructor;
+import net.anyuruf.memberbasic.config.DomainService;
 import net.anyuruf.memberbasic.domain.member.api.MemberApi;
 import net.anyuruf.memberbasic.domain.member.entity.MemberBasic;
 import net.anyuruf.memberbasic.domain.member.entity.MemberBasicInput;
 import net.anyuruf.memberbasic.domain.member.spi.MemberSpi;
 
 
-@Domain
+@DomainService
 @RequiredArgsConstructor
 public class MemberService implements MemberApi {
 	private final MemberSpi memberSpi;

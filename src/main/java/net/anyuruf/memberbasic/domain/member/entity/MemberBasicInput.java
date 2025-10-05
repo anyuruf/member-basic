@@ -2,23 +2,25 @@ package net.anyuruf.memberbasic.domain.member.entity;
 
 import java.time.LocalDate;
 
-import javax.annotation.Nonnull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import net.anyuruf.memberbasic.entity.GenderEnum.Gender;
+import net.anyuruf.memberbasic.domain.member.entity.GenderEnum.Gender;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class MemberBasicInput {
-    @Nonnull
-    private String firstName;
-    @Nonnull
-    private String lastName;
-    @Nonnull
-    private Gender gender;
-    @Nonnull
-    private LocalDate dob;
-}
+
+
+public record MemberBasicInput(
+	    @NotBlank(message = "First name is required")
+	    String firstName,
+
+	    @NotBlank(message = "Last name is required")
+	    String lastName,
+
+	    @NotBlank(message = "Description is required")
+	    String description,
+
+	    Gender gender,
+
+	    @NotNull(message = "Date of birth is required")
+	    LocalDate dob
+	) {}
