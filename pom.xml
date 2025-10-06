@@ -97,14 +97,14 @@
               <configuration>
                   <exportDatatables>true</exportDatatables>
                   <activeRecipes>
-                    <recipe>org.openrewrite.java.spring.boot3.UpgradeSpringBoot_3_5</recipe>
+                    <recipe>org.openrewrite.java.recipes.JavaRecipeBestPractices</recipe>
                   </activeRecipes>
                 </configuration>
                 <dependencies>
                   <dependency>
                     <groupId>org.openrewrite.recipe</groupId>
-                    <artifactId>rewrite-spring</artifactId>
-                    <version>${rewrite-spring.version}</version>
+                    <artifactId>rewrite-rewrite</artifactId>
+                    <version>0.13.0</version>
                   </dependency>
                 </dependencies>
             </plugin>
