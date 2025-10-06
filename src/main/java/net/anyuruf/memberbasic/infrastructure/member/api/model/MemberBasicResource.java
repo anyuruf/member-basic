@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import net.anyuruf.memberbasic.domain.member.entity.GenderEnum;
 import net.anyuruf.memberbasic.domain.member.entity.MemberBasic;
+import net.anyuruf.memberbasic.domain.member.entity.MemberBasicInput;
 import net.anyuruf.memberbasic.infrastructure.member.api.model.GenderEnumArch.GenderArch;
 import net.anyuruf.memberbasic.infrastructure.member.spi.entity.GenderEnum.Gender;
 

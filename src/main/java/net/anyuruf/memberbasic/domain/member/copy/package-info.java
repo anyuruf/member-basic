@@ -1,1 +1,0 @@
-package net.anyuruf.memberbasic.domain.member.copy;
