@@ -2,7 +2,7 @@ package net.anyuruf.memberbasic.infrastructure.member.api.graphql;
 
 import java.util.UUID;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
