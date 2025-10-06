@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import lombok.RequiredArgsConstructor;
 import net.anyuruf.memberbasic.domain.member.api.MemberApi;
 import net.anyuruf.memberbasic.domain.member.entity.MemberBasic;
-import net.anyuruf.memberbasic.infrastructure.member.api.model.EditMemberInput;
+import net.anyuruf.memberbasic.infrastructure.member.api.model.EditMemberRequest;
 import net.anyuruf.memberbasic.infrastructure.member.api.model.MemberBasicInput;
 import net.anyuruf.memberbasic.infrastructure.member.api.model.MemberBasicRequest;
 import net.anyuruf.memberbasic.infrastructure.member.api.model.MemberBasicResource;
@@ -48,7 +48,7 @@ public class MemberBasicController {
     }
 
     @MutationMapping
-    public Mono<MemberBasicResource> editMember(@Valid @Argument EditMemberInput input) {
+    public Mono<MemberBasicResource> editMember(@Valid @Argument EditMemberRequest input) {
         MemberBasic member = new MemberBasic(
             input.id(),
             input.firstName(),

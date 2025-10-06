@@ -1,9 +1,12 @@
 package net.anyuruf.memberbasic.infrastructure.member.api.model;
 
 import java.time.LocalDate;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import net.anyuruf.memberbasic.infrastructure.member.api.model.ApiGenderEnum.Gender;
+
+import net.anyuruf.memberbasic.infrastructure.member.api.model.GenderEnumArch.GenderArch;
+
 
 public record MemberBasicInput(
     @NotBlank(message = "First name is required")
@@ -15,7 +18,7 @@ public record MemberBasicInput(
     @NotBlank(message = "Description is required")
     String description,
 
-    Gender gender,
+    GenderArch genderArch,
 
     @NotNull(message = "Date of birth is required")
     LocalDate dob
