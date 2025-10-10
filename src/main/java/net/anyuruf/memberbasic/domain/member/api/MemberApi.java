@@ -2,18 +2,18 @@ package net.anyuruf.memberbasic.domain.member.api;
 
 import java.util.UUID;
 
-import org.reactivestreams.Publisher;
-
-import net.anyuruf.memberbasic.domain.member.entity.MemberBasic;
-import net.anyuruf.memberbasic.domain.member.entity.MemberBasicInput;
+import net.anyuruf.memberbasic.domain.member.model.MemberBasic;
+import net.anyuruf.memberbasic.domain.member.model.MemberBasicInput;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface MemberApi {
-	 	Publisher<MemberBasic> addFamilyMember(MemberBasicInput memberBasicInput);
+	 	Mono<MemberBasic> addFamilyMember(MemberBasicInput memberBasicInput);
 
-	    Publisher<MemberBasic> getAllMembers();
+	    Flux<MemberBasic> getAllMembers();
 
-	    Publisher<MemberBasic> getFamilyMember(UUID memberId);
+	    Mono<MemberBasic> getFamilyMember(UUID memberId);
 
-	    Publisher<MemberBasic> editFamilyMember(MemberBasic memberBasic);
+	    Mono<MemberBasic> editFamilyMember(MemberBasic memberBasic);
 
 }

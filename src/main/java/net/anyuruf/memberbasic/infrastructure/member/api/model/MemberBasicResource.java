@@ -3,9 +3,9 @@ package net.anyuruf.memberbasic.infrastructure.member.api.model;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import net.anyuruf.memberbasic.domain.member.entity.GenderEnum.Gender;
-import net.anyuruf.memberbasic.domain.member.entity.MemberBasic;
-import net.anyuruf.memberbasic.domain.member.entity.MemberBasicInput;
+import net.anyuruf.memberbasic.domain.member.model.MemberBasic;
+import net.anyuruf.memberbasic.domain.member.model.MemberBasicInput;
+import net.anyuruf.memberbasic.domain.member.model.GenderEnum.Gender;
 import net.anyuruf.memberbasic.infrastructure.member.api.model.GenderEnumArch.GenderArch;
 
 

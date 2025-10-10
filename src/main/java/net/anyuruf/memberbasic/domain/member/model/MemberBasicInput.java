@@ -1,11 +1,10 @@
-package net.anyuruf.memberbasic.domain.member.entity;
+package net.anyuruf.memberbasic.domain.member.model;
 
 import java.time.LocalDate;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-
-import net.anyuruf.memberbasic.domain.member.entity.GenderEnum.Gender;
+import net.anyuruf.memberbasic.domain.member.model.GenderEnum.Gender;
 
 
 
