@@ -2,14 +2,14 @@ package net.anyuruf.memberbasic.domain.member;
 
 import java.util.UUID;
 
-import org.reactivestreams.Publisher;
-
 import lombok.RequiredArgsConstructor;
 import net.anyuruf.memberbasic.config.DomainService;
 import net.anyuruf.memberbasic.domain.member.api.MemberApi;
-import net.anyuruf.memberbasic.domain.member.entity.MemberBasic;
-import net.anyuruf.memberbasic.domain.member.entity.MemberBasicInput;
+import net.anyuruf.memberbasic.domain.member.model.MemberBasic;
+import net.anyuruf.memberbasic.domain.member.model.MemberBasicInput;
 import net.anyuruf.memberbasic.domain.member.spi.MemberSpi;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 
 @DomainService
@@ -18,22 +18,22 @@ public class MemberService implements MemberApi {
 	private final MemberSpi memberSpi;
 
 	@Override
-	public Publisher<MemberBasic> addFamilyMember(MemberBasicInput memberBasicInput) {
+	public Mono<MemberBasic> addFamilyMember(MemberBasicInput memberBasicInput) {
 		return memberSpi.addFamilyMember(memberBasicInput);
 	}
 
 	@Override
-	public Publisher<MemberBasic> getAllMembers() {
+	public Flux<MemberBasic> getAllMembers() {
 		return memberSpi.getAllMembers();
 	}
 
 	@Override
-	public Publisher<MemberBasic> getFamilyMember(UUID memberId) {
+	public Mono<MemberBasic> getFamilyMember(UUID memberId) {
 		return memberSpi.getFamilyMember(memberId);
 	}
 
 	@Override
-	public Publisher<MemberBasic> editFamilyMember(MemberBasic memberBasic) {
+	public Mono<MemberBasic> editFamilyMember(MemberBasic memberBasic) {
 		return memberSpi.editFamilyMember(memberBasic);
 	}
 

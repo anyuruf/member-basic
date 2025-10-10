@@ -12,9 +12,9 @@ import org.springframework.validation.annotation.Validated;
 
 import lombok.RequiredArgsConstructor;
 import net.anyuruf.memberbasic.domain.member.api.MemberApi;
-import net.anyuruf.memberbasic.domain.member.entity.GenderEnum.Gender;
-import net.anyuruf.memberbasic.domain.member.entity.MemberBasic;
-import net.anyuruf.memberbasic.domain.member.entity.MemberBasicInput;
+import net.anyuruf.memberbasic.domain.member.model.MemberBasic;
+import net.anyuruf.memberbasic.domain.member.model.MemberBasicInput;
+import net.anyuruf.memberbasic.domain.member.model.GenderEnum.Gender;
 import net.anyuruf.memberbasic.infrastructure.member.api.model.EditMemberRequest;
 import net.anyuruf.memberbasic.infrastructure.member.api.model.MemberBasicRequest;
 import net.anyuruf.memberbasic.infrastructure.member.api.model.MemberBasicResource;
@@ -31,7 +31,7 @@ public class MemberBasicController {
 
     @QueryMapping
     public Flux<MemberBasicResource> getAllMembers() {
-    	 return Flux.from(memberApi.getAllMembers()).map(MemberBasicResource::new);
+    	 return memberApi.getAllMembers().map(MemberBasicResource::new);
     }
 
     @MutationMapping
@@ -43,7 +43,7 @@ public class MemberBasicController {
             Gender.valueOf(input.genderArch().name()),
             input.dob()
         );
-        return Mono.from(memberApi.addFamilyMember(member)).map(MemberBasicResource::new);
+        return memberApi.addFamilyMember(member).map(MemberBasicResource::new);
     }
 
     @MutationMapping
@@ -56,12 +56,12 @@ public class MemberBasicController {
             Gender.valueOf(input.genderArch().name()),
             input.dob()
         );
-        return Mono.from(memberApi.editFamilyMember(member)).map(MemberBasicResource::new);
+        return memberApi.editFamilyMember(member).map(MemberBasicResource::new);
     }
 
     @QueryMapping
     public Mono<MemberBasicResource> getFamilyMember(@Argument UUID uuid) {
-         return Mono.from(memberApi.getFamilyMember(uuid)).map(MemberBasicResource::new);
+         return memberApi.getFamilyMember(uuid).map(MemberBasicResource::new);
     }
 
 }
