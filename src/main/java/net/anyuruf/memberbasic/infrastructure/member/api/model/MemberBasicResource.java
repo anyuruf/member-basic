@@ -9,7 +9,7 @@ import net.anyuruf.memberbasic.domain.member.model.GenderEnum.Gender;
 import net.anyuruf.memberbasic.infrastructure.member.api.model.GenderEnumArch.GenderArch;
 
 
-public record MemberBasicResource(UUID uuid, String firstName, String lastName, String description, GenderArch genderArch,
+public record MemberBasicResource(UUID id, String firstName, String lastName, String description, GenderArch genderArch,
 		LocalDate dob) {
 	/** Convert domain entity → resource */
     public MemberBasicResource(MemberBasic member) {

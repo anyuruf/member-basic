@@ -20,11 +20,11 @@ public record EditMemberRequest(
     @NotBlank(message = "Last name is required")
     String lastName,
 
-    @NotBlank(message = "Description is required")
+    
     String description,
 
     GenderArch genderArch,
 
-    @NotNull(message = "Date of birth is required")
+   
     LocalDate dob
 ) {}

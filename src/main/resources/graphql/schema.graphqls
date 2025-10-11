@@ -1,28 +1,32 @@
 scalar Date
+  @specifiedBy(url: 
+    "https://tools.ietf.org/html/rfc3339"
+  )
 
-type MemberBasic {
-  id: ID
-  firstName: String
-  lastName: String
+type MemberBasicResponse {
+  id: ID!
+  firstName: String!
+  lastName: String!
   description: String
-  gender: Gender
+  genderArch: GenderArch
   dob: Date
 }
 
-input MemberBasicInput {
+input MemberBasicRequest {
   firstName: String!
   lastName: String!
-  description:String!
-  gender: Gender!
-  dob: Date!
+  description:String
+  genderArch: GenderArch
+  dob: Date
 }
 
-input EditMemberInput {
+input EditMemberRequest {
+  id: ID!
   firstName: String!
   lastName: String!
-  description:String!
-  gender: Gender!
-  dob: Date!
+  description:String
+  genderArch: GenderArch
+  dob: Date
 }
 
 type Link {
@@ -44,20 +48,20 @@ enum Parent {
   MOTHER
 }
 
-enum Gender {
+enum GenderArch {
   MALE
   FEMALE
 }
 
 type Query {
-  getAllMembers: [MemberBasic]
-  getFamilyMember(id): MemberBasic
+  getAllMembers: [MemberBasicResponse]
+  getFamilyMember(id: ID!): MemberBasicResponse
   getLinks: [Link]
 }
 
 type Mutation {
-  addMember(memberBasicInput: MemberBasicInput!): MemberBasic
-  editMemmber(editMemberInput: EditMemberInput!): MemberBasic
+  addMember(memberBasicRequest: MemberBasicRequest!): MemberBasicResponse
+  editMember(editMemberRequest: EditMemberRequest!): MemberBasicResponse
   addLink(linkInput: LinkInput): Link
   addLinks(links: [LinkInput]): [Link]
   editLink(linkInput: LinkInput): Link
