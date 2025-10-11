@@ -20,7 +20,6 @@ public record EditMemberRequest(
     @NotBlank(message = "Last name is required")
     String lastName,
 
-    
     String description,
 
     GenderArch genderArch,
