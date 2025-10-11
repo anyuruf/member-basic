@@ -2,7 +2,8 @@ package net.anyuruf.memberbasic.domain.member;
 
 import java.util.UUID;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
 import net.anyuruf.memberbasic.config.DomainService;
 import net.anyuruf.memberbasic.domain.member.api.MemberApi;
 import net.anyuruf.memberbasic.domain.member.model.MemberBasic;
@@ -12,10 +13,13 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 
-@DomainService
-@RequiredArgsConstructor
+@Service
 public class MemberService implements MemberApi {
 	private final MemberSpi memberSpi;
+	
+	public MemberService (MemberSpi memberSpi) {
+		this.memberSpi = memberSpi;
+	}
 
 	@Override
 	public Mono<MemberBasic> addFamilyMember(MemberBasicInput memberBasicInput) {

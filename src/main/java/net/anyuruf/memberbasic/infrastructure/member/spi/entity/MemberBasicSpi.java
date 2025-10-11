@@ -3,14 +3,17 @@ package net.anyuruf.memberbasic.infrastructure.member.spi.entity;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import org.springframework.data.annotation.Id;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
 import net.anyuruf.memberbasic.domain.member.model.GenderEnum.Gender;
 import net.anyuruf.memberbasic.domain.member.model.MemberBasic;
 import net.anyuruf.memberbasic.domain.member.model.MemberBasicInput;
 import net.anyuruf.memberbasic.infrastructure.member.spi.entity.GenderEnumSpi.GenderSpi;
 
-public record MemberBasicSpi(@Id UUID id, String firstName, String lastName, String description, GenderSpi gender,
+
+@Table
+public record MemberBasicSpi(@PrimaryKey UUID id, String firstName, String lastName, String description, GenderSpi gender,
 		LocalDate dob) {
 	//** Convert domain MemberBasicInut → Infrastructure MemberBasicSpi */
     public MemberBasicSpi(MemberBasicInput member) {
