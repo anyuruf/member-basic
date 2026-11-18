@@ -79,45 +79,24 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
-              <groupId>org.openrewrite.maven</groupId>
-              <artifactId>rewrite-maven-plugin</artifactId>
-              <configuration>
-                  <exportDatatables>true</exportDatatables>
-                  <activeRecipes>
-                    <recipe>org.openrewrite.java.migrate.UpgradeToJava21</recipe>
-                  </activeRecipes>
-                </configuration>
-                <dependencies>
-                  <dependency>
-                    <groupId>org.openrewrite.recipe</groupId>
-                    <artifactId>rewrite-migrate-java</artifactId>
-                    <version>3.18.0</version>
-                  </dependency>
-                </dependencies>
-            </plugin>
-		</plugins>
-		<pluginManagement>
-            <plugins>
-                 <plugin>
-                  <groupId>org.openrewrite.maven</groupId>
-                  <artifactId>rewrite-maven-plugin</artifactId>
-                  <version>${rewrite-maven-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+          <plugin>
+            <groupId>org.openrewrite.maven</groupId>
+            <artifactId>rewrite-maven-plugin</artifactId>
+            <version>6.61.0</version>
+            <configuration>
+              <exportDatatables>true</exportDatatables>
+              <activeRecipes>
+                <recipe>org.openrewrite.java.migrate.UpgradeToJava25</recipe>
+              </activeRecipes>
+            </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>org.openrewrite.recipe</groupId>
+                <artifactId>rewrite-migrate-java</artifactId>
+                <version>3.57.0</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+    </plugins>
 	</build>
-
-</project>
+	</project>
