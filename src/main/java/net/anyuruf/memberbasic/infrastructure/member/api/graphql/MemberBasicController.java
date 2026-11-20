@@ -38,6 +38,8 @@ public class MemberBasicController {
     @MutationMapping
     public Mono<MemberBasicResource> addMember(@Valid @Argument MemberBasicRequest memberBasicRequest) {
         MemberBasicInput member = new MemberBasicInput(
+        	memberBasicRequest.fatherId(),
+        	memberBasicRequest.motherId(),
             memberBasicRequest.firstName(),
             memberBasicRequest.lastName(),
             memberBasicRequest.description(),
@@ -51,6 +53,8 @@ public class MemberBasicController {
     public Mono<MemberBasicResource> editMember(@Valid @Argument EditMemberRequest editMemberRequest) {
         MemberBasic member = new MemberBasic(
             editMemberRequest.id(),
+            editMemberRequest.fatherId(),
+            editMemberRequest.motherId(),
             editMemberRequest.firstName(),
             editMemberRequest.lastName(),
             editMemberRequest.description(),

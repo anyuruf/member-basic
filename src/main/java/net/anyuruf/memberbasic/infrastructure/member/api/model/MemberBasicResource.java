@@ -9,12 +9,14 @@ import net.anyuruf.memberbasic.domain.member.model.GenderEnum.Gender;
 import net.anyuruf.memberbasic.infrastructure.member.api.model.GenderEnumArch.GenderArch;
 
 
-public record MemberBasicResource(UUID id, String firstName, String lastName, String description, GenderArch genderArch,
+public record MemberBasicResource(UUID id, UUID fatherId, UUID motherId, String firstName, String lastName, String description, GenderArch genderArch,
 		LocalDate dob) {
 	/** Convert domain entity → resource */
     public MemberBasicResource(MemberBasic member) {
         this(
             member.id(),
+            member.fatherId(),
+            member.motherId(),
             member.firstName(),
             member.lastName(),
             member.description(),
@@ -26,6 +28,8 @@ public record MemberBasicResource(UUID id, String firstName, String lastName, St
     /** Convert input → domain entity (for new member) */
     public static MemberBasicInput toDomain(MemberBasicRequest input) {
         return new MemberBasicInput(
+        	input.fatherId(),
+        	input.motherId(),
             input.firstName(),
             input.lastName(),
             input.description(), 
@@ -38,6 +42,8 @@ public record MemberBasicResource(UUID id, String firstName, String lastName, St
     public static MemberBasic toDomain(EditMemberRequest input) {
         return new MemberBasic(
             input.id(), 
+            input.fatherId(),
+            input.motherId(),
             input.firstName(),
             input.lastName(),
             input.description(),

@@ -13,6 +13,12 @@ import net.anyuruf.memberbasic.infrastructure.member.api.model.GenderEnumArch.Ge
 public record EditMemberRequest(
     @NotNull(message = "ID is required for editing")
     UUID id,
+    
+    @NotNull(message = "ID is required for editing")
+    UUID fatherId,
+    
+    @NotNull(message = "ID is required for editing")
+    UUID motherId,
 
     @NotBlank(message = "First name is required")
     String firstName,
