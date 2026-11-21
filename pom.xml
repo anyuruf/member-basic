@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.6</version>
-		<relativePath /> <!-- lookup parent from repository -->
-	</parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>4.2.0</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 	<groupId>net.anyuruf</groupId>
 	<artifactId>memberbasic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>memberbasic</name>
 	<description>Basic member geneology service</description>
 	<properties>
-		<java.version>21</java.version>
-		<spring-cloud.version>2025.0.0</spring-cloud.version>
-		<rewrite-maven-plugin.version>6.18.0</rewrite-maven-plugin.version>
-        <rewrite-spring.version>6.15.0</rewrite-spring.version>
+		<java.version>25</java.version>
 		<maven.version>3.8.6</maven.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -28,7 +25,7 @@
 		<argLine>-Djava.security.egd=file:/dev/./urandom -Xmx256M</argLine>
 		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
 		<run.addResources>false</run.addResources>
-		<spring-boot.version>3.5.6</spring-boot.version>
+		<spring-boot.version>${project.parent.version}</spring-boot.version>
 		<archunit-junit5.version>1.5.1</archunit-junit5.version>
 		<blockhound-junit-platform.version>1.0.18.RELEASE</blockhound-junit-platform.version>
 		<checkstyle.version>14.4.0</checkstyle.version>
@@ -43,6 +40,16 @@
 		<maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
 		<modernizer-maven-plugin.version>3.5.0</modernizer-maven-plugin.version>
         <nohttp-checkstyle.version>0.0.11</nohttp-checkstyle.version>
+        <profile.e2e/>
+        <profile.no-liquibase/>
+        <profile.test/>
+        <profile.tls/>
+        <properties-maven-plugin.version>1.3.1</properties-maven-plugin.version>
+        <resource.delimiter>@</resource.delimiter>
+        <sonar-maven-plugin.version>5.8.0.7211</sonar-maven-plugin.version>
+        <spotless-maven-plugin.version>3.10.4</spotless-maven-plugin.version>
+        <spring-cloud-dependencies.version>2025.1.3</spring-cloud-dependencies.version>
+        <spring.profiles.active>dev</spring.profiles.active>
 	</properties>
 
 	<dependencies>
@@ -50,6 +57,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <scope>provided</scope>
+        </dependency>
 		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
@@ -114,16 +126,39 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>io.projectreactor</groupId>
-			<artifactId>reactor-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-testcontainers</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>context-propagation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <scope>provided</scope>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.graphql</groupId>
 			<artifactId>spring-graphql-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-liquibase-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 		<dependency>
 			<groupId>io.projectreactor.tools</groupId>
 			<artifactId>blockhound-junit-platform</artifactId>
@@ -134,12 +169,12 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 			<dependency>
 				<groupId>com.playtika.reactivefeign</groupId>
 				<artifactId>feign-reactor-bom</artifactId>
@@ -184,24 +219,40 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
             </plugin>
-          <plugin>
-            <groupId>org.openrewrite.maven</groupId>
-            <artifactId>rewrite-maven-plugin</artifactId>
-            <version>6.61.0</version>
-            <configuration>
-              <exportDatatables>true</exportDatatables>
-              <activeRecipes>
-                <recipe>org.openrewrite.java.migrate.UpgradeToJava25</recipe>
-              </activeRecipes>
-            </configuration>
-            <dependencies>
-              <dependency>
-                <groupId>org.openrewrite.recipe</groupId>
-                <artifactId>rewrite-migrate-java</artifactId>
-                <version>3.57.0</version>
-              </dependency>
-            </dependencies>
-          </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>${spotless-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>${properties-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+            </plugin>
         </plugins>
         <pluginManagement>
             <plugins>
@@ -250,6 +301,10 @@
                             <path>
                                 <groupId>org.springframework.boot</groupId>
                                 <artifactId>spring-boot-configuration-processor</artifactId>
+                            </path>
+                            <path>
+                                <groupId>org.glassfish.jaxb</groupId>
+                                <artifactId>jaxb-runtime</artifactId>
                             </path>
                         </annotationProcessorPaths>
                     </configuration>
@@ -402,7 +457,6 @@
                             </ports>
                             <environment>
                                 <SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
-                                <JHIPSTER_SLEEP>0</JHIPSTER_SLEEP>
                             </environment>
                             <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
                             <user>1000</user>
@@ -486,7 +540,33 @@
                         </execution>
                     </executions>
                 </plugin>
+                
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${sonar-maven-plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement> 
 	</build>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- default Spring profiles -->
+                <profile.test>test,testdev</profile.test>
+                <spring.profiles.active>dev${profile.tls}${profile.no-liquibase}</spring.profiles.active>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-devtools</artifactId>
+                    <optional>true</optional>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>
