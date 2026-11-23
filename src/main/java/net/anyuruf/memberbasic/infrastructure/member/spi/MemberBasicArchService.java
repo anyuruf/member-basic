@@ -2,7 +2,7 @@ package net.anyuruf.memberbasic.infrastructure.member.spi;
 
 import java.util.UUID;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import net.anyuruf.memberbasic.domain.member.model.MemberBasic;
 import net.anyuruf.memberbasic.domain.member.model.MemberBasicInput;
@@ -13,7 +13,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 
-@Repository
+@Service
 public class MemberBasicArchService implements MemberSpi  {
 	private final CassandraMemberBasicRepository memberRepo;
 
