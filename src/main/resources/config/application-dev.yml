@@ -1,0 +1,62 @@
+# ===================================================================
+# Spring Boot configuration for the "dev" profile.
+#
+# This configuration overrides the application.yml file.
+#
+# More information on profiles: https://www.jhipster.tech/profiles/
+# More information on configuration properties: https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# https://docs.spring.io/spring-boot/appendix/application-properties/index.html
+# ===================================================================
+
+logging:
+  level:
+    ROOT: DEBUG
+    tech.jhipster: DEBUG
+    org.hibernate.SQL: DEBUG
+    net.genie.member: DEBUG
+
+management:
+  zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0 # report 100% of traces
+
+spring:
+  devtools:
+    restart:
+      enabled: true
+      additional-exclude: static/**
+    livereload:
+      enabled: false # we use bundler for livereload
+  liquibase:
+    # Remove 'faker' if you do not want the sample data to be loaded automatically
+    contexts: dev, faker
+    url: url: jdbc:cassandra://localhost[:9042]/anyuruf_geneology?compliancemode=Liquibase[&localdatacenter=anyuruf-dc]
+  graphql:
+    graphiql:
+        enabled: true
+    # Spring cassandra options
+  cassandra:
+    request:
+        timeout: 10s
+    connection:
+        connect-timeout: 10s
+        init-query-timeout: 10s
+    #spring.cassandra.ssl.enabled=true
+    local-datacenter: anyuruf-dc
+    contact-points: 127.0.0.1
+    #load-balancing-policy.local-datacenter=datacenter1
+    keyspace-name: anyuruf_geneology
+    port: 9042
+server:
+  port: 8081
+  # make sure requests the proxy uri instead of the server one
+  forward-headers-strategy: native
+
