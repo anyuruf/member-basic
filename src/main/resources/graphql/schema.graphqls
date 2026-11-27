@@ -5,6 +5,8 @@ scalar Date
 
 type MemberBasicResponse {
   id: ID!
+  fatherId: ID
+  motherId: ID
   firstName: String!
   lastName: String!
   description: String
@@ -13,6 +15,8 @@ type MemberBasicResponse {
 }
 
 input MemberBasicRequest {
+  fatherId: ID
+  motherId: ID
   firstName: String!
   lastName: String!
   description:String
@@ -22,6 +26,8 @@ input MemberBasicRequest {
 
 input EditMemberRequest {
   id: ID!
+  fatherId: ID
+  motherId: ID
   firstName: String!
   lastName: String!
   description:String

@@ -36,9 +36,10 @@ spring:
     livereload:
       enabled: false # we use bundler for livereload
   liquibase:
+    enabled: false
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
-    url: url: jdbc:cassandra://localhost[:9042]/anyuruf_geneology?compliancemode=Liquibase[&localdatacenter=anyuruf-dc]
+    url: jdbc:cassandra://localhost:9042/anyuruf_geneology?compliancemode=Liquibase&localdatacenter=datacenter1
   graphql:
     graphiql:
         enabled: true

@@ -3,7 +3,8 @@ package net.anyuruf.memberbasic.infrastructure.member.spi.entity;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
+import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 import net.anyuruf.memberbasic.domain.member.model.GenderEnum.Gender;
@@ -13,7 +14,26 @@ import net.anyuruf.memberbasic.infrastructure.member.spi.entity.GenderEnumSpi.Ge
 
 
 @Table
-public record MemberBasicSpi(@PrimaryKey UUID id, UUID fatherId, UUID motherId, String firstName, String lastName, String description, GenderSpi gender,
+public record MemberBasicSpi(@PrimaryKeyColumn(
+	    name = "father_id",
+	    ordinal = 0,
+	    type = PrimaryKeyType.PARTITIONED
+	)
+	UUID fatherId,
+
+	@PrimaryKeyColumn(
+	    name = "mother_id",
+	    ordinal = 1,
+	    type = PrimaryKeyType.CLUSTERED
+	)
+	UUID motherId,
+
+	@PrimaryKeyColumn(
+	    name = "id",
+	    ordinal = 2,
+	    type = PrimaryKeyType.CLUSTERED
+	)
+	UUID id, String firstName, String lastName, String description, GenderSpi gender,
 		LocalDate dob) {
 	//** Convert domain MemberBasicInut → Infrastructure MemberBasicSpi */
     public MemberBasicSpi(MemberBasicInput member) {
