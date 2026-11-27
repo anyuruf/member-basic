@@ -6,14 +6,13 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-import net.anyuruf.memberbasic.config.Stub;
 import net.anyuruf.memberbasic.domain.member.model.MemberBasic;
 import net.anyuruf.memberbasic.domain.member.model.MemberBasicInput;
 import net.anyuruf.memberbasic.domain.member.spi.MemberSpi;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Stub
+
 public class MemberSpiStub implements MemberSpi {
 
     private final Map<UUID, MemberBasic> members = new ConcurrentHashMap<>();
